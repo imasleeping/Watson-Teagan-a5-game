@@ -41,6 +41,13 @@ public class plinkospawn : MonoBehaviour
             
         }
         timer -= Time.deltaTime;
+        if (timer >= 0)
+        {
         timertext.text = timer.ToString();
+        }
+        else
+        {
+            timertext.text = " ";
+        }
     }
 }
