@@ -17,9 +17,14 @@ public class plinkospawn : MonoBehaviour
     }
     void Update()
     {
-        player.position = new Vector3((Input.mousePosition.x /40) - 500, player.position.y, player.position.z);
-        Debug.Log(Input.mousePosition.x);
-        if (Input.GetMouseButtonDown(0))
+        float movex = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+        Debug.Log(player.position.x);
+        if (player.position.x > 7.4f)
+        {
+            player.position = new Vector3(7.39f, player.position.y, player.position.z);
+        }
+        player.position += new Vector3(movex,0,0);
+        if (Input.GetKeyDown(KeyCode.Space))
         {
            Instantiate(ball, new Vector3(player.position.x, player.position.y - player.localScale.y/1.5f, player.position.z),new Quaternion(0,0,0,0));
         }
