@@ -23,6 +23,10 @@ public class plinkospawn : MonoBehaviour
         {
             player.position = new Vector3(7.39f, player.position.y, player.position.z);
         }
+        if (player.position.x < -7.4f)
+        {
+            player.position = new Vector3(-7.39f, player.position.y, player.position.z);
+        }
         player.position += new Vector3(movex,0,0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
