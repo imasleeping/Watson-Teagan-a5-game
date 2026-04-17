@@ -15,13 +15,11 @@ public class plinkospawn : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        float movex = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-        player.position = new Vector3(Input.mousePosition.x /80, player.position.y, player.position.z);
-        if (Input.GetMouseButtonDown(1))
+        player.position = new Vector3((Input.mousePosition.x /40) - 500, player.position.y, player.position.z);
+        Debug.Log(Input.mousePosition.x);
+        if (Input.GetMouseButtonDown(0))
         {
            Instantiate(ball, new Vector3(player.position.x, player.position.y - player.localScale.y/1.5f, player.position.z),new Quaternion(0,0,0,0));
         }
