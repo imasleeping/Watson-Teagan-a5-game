@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class plinkospawn : MonoBehaviour
     public Transform player;
     public GameObject ball;
     float speed = 10;
+    float timer = 0;
+    public TextMeshPro timertext;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +33,14 @@ public class plinkospawn : MonoBehaviour
         player.position += new Vector3(movex,0,0);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           Instantiate(ball, new Vector3(player.position.x, player.position.y - player.localScale.y/1.5f, player.position.z),new Quaternion(0,0,0,0));
+            if (timer <= 0)
+            {
+               Instantiate(ball, new Vector3(player.position.x, player.position.y - player.localScale.y/1.5f, player.position.z),new Quaternion(0,0,0,0));
+                timer = 3;
+            }
+            
         }
+        timer -= Time.deltaTime;
+        timertext.text = timer.ToString();
     }
 }
